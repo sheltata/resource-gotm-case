@@ -2,11 +2,17 @@
 
 ## Context
 
-Self-development market is saturated and fragmented.
+The self-development space is saturated with content but lacks structure.
 
-Users are not lacking content — they lack structured self-understanding.
+Users are exposed to large volumes of advice, but struggle to translate it into personal clarity or action.
 
-## Positioning
+## Core Problem
+
+The problem is not lack of information.
+
+The problem is lack of structured self-understanding.
+
+## Positioning Shift
 
 From:
 self-development content
@@ -14,11 +20,21 @@ self-development content
 To:
 guided framework for self-understanding and self-worth development
 
-## Core idea
+## Core Idea
 
-Clarity is not emotional inspiration.
-Clarity is structure.
+Clarity is not a motivational state.
 
-## Messaging logic
+Clarity is the result of structured thinking.
 
-Outcome → emotional tension → structured resolution
+## Messaging Model
+
+Outcome → Internal tension → Structured resolution
+
+- Outcome: clarity, direction, self-trust
+- Tension: confusion, lack of internal structure
+- Resolution: guided learning framework
+
+## Key Principle
+
+We do not describe the product first.
+We shape how the user interprets their own problem — and then introduce the product as the resolution.
