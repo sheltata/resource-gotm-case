@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReSource — Case Study · Tatiana Shelekhova</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #f7f2ec; --cream2: #f0e9df;
+  --coral: #e8826a; --coral-light: #f2a08c; --coral-pale: #fce8e2;
+  --plum: #7a5c9e; --plum-light: #c4a8e0; --plum-pale: #f0eaf8;
+  --blue: #4a7fa5; --blue-pale: #ddeaf5;
+  --ink: #2a2420; --ink-light: #5a4f48; --ink-muted: #9a8f88;
+  --handwritten: 'Caveat', cursive;
+  --serif: 'Lora', serif;
+  --sans: 'DM Sans', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1rem 3rem; background: rgba(247,242,236,0.93); backdrop-filter: blur(10px); border-bottom: 1.5px solid var(--coral-light); }
+.nav-case { font-family: var(--handwritten); font-size: 19px; color: var(--ink-light); }
+
+.hero-wrap { max-width: 1100px; margin: 0 auto; padding: 8rem 3rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.hero-eyebrow { font-family: var(--handwritten); font-size: 20px; color: var(--coral); margin-bottom: 1rem; }
+.hero h1 { font-family: var(--handwritten); font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 1.5rem; }
+.hero h1 em { font-style: normal; color: var(--plum); position: relative; display: inline-block; }
+.hero h1 em::after { content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 3px; background: var(--coral-light); border-radius: 2px; opacity: 0.7; }
+.hero-desc { font-size: 16px; color: var(--ink-light); line-height: 1.8; max-width: 460px; }
+.hero-card { background: white; border: 1.5px solid var(--coral-light); border-radius: 16px; padding: 2rem; position: relative; box-shadow: 4px 6px 0 var(--coral-pale); }
+.hero-card::before { content: '✦'; position: absolute; top: -14px; right: 2rem; font-size: 24px; color: var(--coral); }
+.meta-row { display: flex; flex-direction: column; gap: 4px; padding: 1rem 0; border-bottom: 1px dashed var(--cream2); }
+.meta-row:last-child { border-bottom: none; padding-bottom: 0; }
+.meta-row:first-child { padding-top: 0; }
+.meta-key { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-muted); }
+.meta-val { font-family: var(--handwritten); font-size: 18px; color: var(--ink); line-height: 1.3; }
+
+.principle-stripe { background: var(--plum); padding: 4rem 3rem; text-align: center; }
+.principle-stripe blockquote { font-family: var(--serif); font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 400; font-style: italic; color: white; max-width: 760px; margin: 0 auto 1rem; line-height: 1.5; }
+.principle-stripe cite { font-family: var(--handwritten); font-size: 17px; color: var(--plum-light); font-style: normal; }
+
+.section { max-width: 1100px; margin: 0 auto; padding: 5rem 3rem; }
+.section + .section { border-top: 1.5px dashed var(--cream2); }
+.section-tag { display: inline-block; font-family: var(--handwritten); font-size: 16px; background: var(--coral-pale); color: var(--coral); padding: 4px 14px; border-radius: 20px; margin-bottom: 1rem; border: 1px solid var(--coral-light); }
+h2 { font-family: var(--handwritten); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 1.5rem; }
+
+.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.metric-card { background: white; border: 1.5px solid var(--coral-light); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; box-shadow: 3px 4px 0 var(--coral-pale); transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+.metric-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--coral-light), var(--plum-light)); }
+.metric-card:hover { transform: translateY(-3px); box-shadow: 3px 8px 0 var(--coral-pale); }
+.metric-num { font-family: var(--handwritten); font-size: 3.8rem; font-weight: 700; color: var(--coral); line-height: 1; display: block; }
+.metric-x { font-size: 2rem; color: var(--coral-light); }
+.metric-label { font-size: 13px; color: var(--ink-muted); margin-top: 0.5rem; line-height: 1.4; }
+
+.gallery-section { background: var(--cream2); padding: 4rem 3rem; }
+.gallery-inner { max-width: 1100px; margin: 0 auto; }
+.gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-top: 2rem; }
+.gallery-item { border-radius: 12px; overflow: hidden; border: 2px solid white; box-shadow: 2px 3px 0 rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; background: white; }
+.gallery-item:hover { transform: rotate(-1deg) translateY(-4px); box-shadow: 4px 8px 0 rgba(0,0,0,0.1); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-item:nth-child(2) { transform: rotate(1deg); }
+.gallery-item:nth-child(4) { transform: rotate(-0.5deg); }
+.gallery-caption { font-family: var(--handwritten); font-size: 16px; color: var(--ink-muted); text-align: center; margin-top: 1.5rem; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; align-items: start; }
+.body-text { font-size: 15px; color: var(--ink-light); line-height: 1.8; }
+.body-text + .body-text { margin-top: 1rem; }
+
+.shift-box { border: 1.5px solid var(--cream2); border-radius: 12px; overflow: hidden; margin-top: 1.5rem; }
+.shift-row { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.25rem; }
+.shift-row + .shift-row { border-top: 1px dashed var(--cream2); }
+.shift-row.from { background: var(--cream2); }
+.shift-row.to { background: var(--plum-pale); }
+.shift-badge { font-family: var(--handwritten); font-size: 14px; padding: 2px 10px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; }
+.from .shift-badge { background: white; color: var(--ink-muted); border: 1px solid var(--ink-muted); }
+.to .shift-badge { background: var(--plum); color: white; }
+.shift-text { font-size: 14px; line-height: 1.5; padding-top: 3px; }
+.from .shift-text { color: var(--ink-muted); }
+.to .shift-text { color: var(--plum); font-weight: 500; }
+
+.model-label { font-family: var(--handwritten); font-size: 17px; color: var(--ink-muted); margin-bottom: 0.75rem; }
+.steps-list { display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--cream2); border-radius: 12px; overflow: hidden; }
+.step-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.25rem; background: white; transition: background 0.15s; }
+.step-item + .step-item { border-top: 1px dashed var(--cream2); }
+.step-item:hover { background: var(--cream); }
+.step-n { width: 28px; height: 28px; border-radius: 50%; background: var(--coral-pale); border: 1.5px solid var(--coral-light); display: flex; align-items: center; justify-content: center; font-family: var(--handwritten); font-size: 16px; font-weight: 700; color: var(--coral); flex-shrink: 0; }
+.step-title { font-family: var(--handwritten); font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.step-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+
+.narrative-list { display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--cream2); border-radius: 12px; overflow: hidden; margin-top: 1rem; }
+.narrative-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: white; }
+.narrative-item + .narrative-item { border-top: 1px dashed var(--cream2); }
+.narrative-item:hover { background: var(--blue-pale); }
+.narrative-n { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--blue); display: flex; align-items: center; justify-content: center; font-family: var(--handwritten); font-size: 17px; font-weight: 700; color: var(--blue); flex-shrink: 0; }
+.narrative-text { font-size: 14px; color: var(--ink-light); line-height: 1.4; }
+
+.exec-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+.exec-card { padding: 1.25rem; background: white; border-radius: 12px; border: 1.5px solid var(--cream2); border-left: 4px solid var(--coral); }
+.exec-title { font-family: var(--handwritten); font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.exec-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.55; }
+
+.learnings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.learning-card { background: white; border: 1.5px solid var(--cream2); border-radius: 16px; padding: 1.75rem; }
+.learning-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--plum-light); margin-bottom: 1rem; }
+.learning-title { font-family: var(--handwritten); font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+.learning-body { font-size: 13px; color: var(--ink-muted); line-height: 1.65; }
+
+.worked-list { display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--cream2); border-radius: 12px; overflow: hidden; margin-top: 2rem; }
+.worked-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1.25rem; background: white; font-size: 14px; color: var(--ink-light); }
+.worked-item + .worked-item { border-top: 1px dashed var(--cream2); }
+.worked-check { color: var(--coral); font-size: 18px; flex-shrink: 0; }
+
+.insight-wrap { background: var(--plum-pale); border-top: 1.5px solid var(--plum-light); padding: 5rem 3rem; }
+.insight-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.insight-label { font-family: var(--handwritten); font-size: 16px; color: var(--plum); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+.insight-label::before { content: '✦'; font-size: 14px; }
+.insight-quote { font-family: var(--serif); font-size: clamp(1.25rem, 2.2vw, 1.65rem); font-style: italic; color: var(--plum); line-height: 1.5; }
+.insight-body { font-size: 15px; color: var(--ink-light); line-height: 1.8; }
+.insight-body + .insight-body { margin-top: 1rem; }
+
+footer { border-top: 1.5px solid var(--coral-light); padding: 2rem 3rem; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-name { font-family: var(--handwritten); font-size: 18px; color: var(--ink-muted); }
+.footer-link { font-family: var(--handwritten); font-size: 18px; color: var(--coral); text-decoration: none; border-bottom: 1.5px solid var(--coral-light); padding-bottom: 1px; }
+.footer-link:hover { color: var(--plum); border-color: var(--plum); }
+
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+.fade { opacity: 0; transform: translateY(18px); animation: fadeUp 0.65s ease forwards; }
+.fade:nth-child(1) { animation-delay: 0.1s; }
+.fade:nth-child(2) { animation-delay: 0.25s; }
+.fade:nth-child(3) { animation-delay: 0.4s; }
+.fade:nth-child(4) { animation-delay: 0.55s; }
+
+@media (max-width: 768px) {
+  nav { padding: 0.75rem 1.5rem; }
+  .hero-wrap, .two-col, .insight-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-wrap { padding: 7rem 1.5rem 3rem; }
+  .section { padding: 3.5rem 1.5rem; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .learnings-grid { grid-template-columns: 1fr; }
+  .gallery-section, .insight-wrap { padding: 3rem 1.5rem; }
+  footer { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <svg viewBox="0 0 327 216" xmlns="http://www.w3.org/2000/svg" style="height:30px;width:auto">
+    <g fill="#2a2420">
+      <path d="m40.7,185.41c-1.65-4.09-2.87-8.3-3.66-12.63l-.83-4.01c-2.28-11.25-3.74-17.66-4.37-19.23h-1.42c0,2.28-.04,4.37-.12,6.25v6.49c0,10.54.75,18.76,2.24,24.66l-1.3,3.19h-3.3l-1.53-1.77.12-7.91c0-7.08-.35-17.82-1.06-32.21-.63-15.34-.94-26.08-.94-32.21,0-3.78,1.3-5.66,3.89-5.66,4.25,0,7.73,1.1,10.44,3.3,2.71,2.2,4.07,5.27,4.07,9.2v8.26c0,1.18-.2,2.54-.59,4.07-.39,1.53-.83,2.77-1.3,3.72l-2.24,4.25-1.89,3.54.59,2.83,1.65,8.38c1.1,6.06,2.16,10.97,3.19,14.75,1.02,3.78,2.28,7.2,3.78,10.27l.71,1.42c.79,1.57,1.18,2.83,1.18,3.78,0,.79-.24,1.48-.71,2.07-.47.59-1.1.88-1.89.88-1.73,0-3.3-1.89-4.72-5.66Zm-5.37-48.79c1.22-3.89,1.83-7.49,1.83-10.8,0-2.52-.32-4.88-.94-7.08-.39-1.26-1.04-2.22-1.95-2.89-.91-.67-2.03-1-3.36-1l-.24.59-.24,1.06.24,13.92c.16,4.09.24,8.54.24,13.33,1.73-.87,3.2-3.25,4.42-7.14Z"/>
+      <path d="m62.23,189.54c-.83-.71-1.28-1.57-1.36-2.6v-5.43c-.08-.71-.12-1.53-.12-2.48,0-1.65-.12-4.17-.35-7.55l-.24-7.55c0-3.85.12-9.6.35-17.23.31-6.84.47-12.58.47-17.23,0-1.1-.12-2.75-.35-4.96-.24-2.28-.35-3.93-.35-4.96,0-5.59,1.65-8.38,4.96-8.38,2.6,0,5.6.51,9.03,1.53,3.42,1.02,5.13,2.24,5.13,3.66,0,.79-.34,1.52-1,2.18-.67.67-1.47,1.2-2.42,1.59-3.3-1.18-6.29-1.97-8.97-2.36.08,1.18.12,2.87.12,5.07,0,3.15-.04,5.98-.12,8.5-.24,3.78-.35,6.61-.35,8.5l.35,1.89,1.89-.12c.63-.08,1.42-.12,2.36-.12,3.78,0,5.66,1.1,5.66,3.3,0,.87-.35,1.59-1.06,2.18-.71.59-1.61.88-2.71.88-1.42,0-2.52-.08-3.3-.24h-2.95c.16,2.05.24,5.04.24,8.97s-.04,7.47-.12,10.62c-.24,4.8-.35,8.38-.35,10.74,0,4.41.08,6.61.24,6.61l3.89-.12c1.34-.08,2.95-.12,4.84-.12,2.99,0,4.48.94,4.48,2.83,0,1.1-.49,1.95-1.48,2.54-.98.59-2.18.88-3.6.88h-10.03c-1.02,0-1.95-.35-2.77-1.06Z"/>
+      <path d="m102.71,98.26-1,7-1.24,2.06c-.84,1.39-1.87,2.62-2.42,4.19-.47,1.5-.71,2.99-.71,4.48,0,2.99.41,6.04,1.24,9.14.83,3.11,1.91,6.04,3.24,8.79l8.26,16.52c1.34,2.83,2.4,6.02,3.19,9.56.79,3.54,1.18,7.08,1.18,10.62,0,5.19-1.26,10.07-3.78,14.63-1.34,2.36-3.07,4.23-5.19,5.61-2.12,1.38-4.48,2.06-7.08,2.06-2.83,0-5.27-.51-7.32-1.54-1.26-.71-1.89-1.53-1.89-2.48s.24-1.71.71-2.3c.47-.59,1.14-.89,2.01-.89.79,0,1.93.32,3.42.94,1.65.63,2.67.94,3.07.94,1.49,0,2.85-.65,4.07-1.95,1.22-1.3,2.18-3.01,2.89-5.13,1.42-3.93,2.12-7.47,2.12-10.62,0-3.38-.53-6.94-1.59-10.68-1.06-3.74-2.5-7.38-4.31-10.91l-1.89-3.78c-1.97-3.93-3.48-7.04-4.54-9.32-1.06-2.28-1.99-4.76-2.77-7.43-1.18-3.78-1.77-7.43-1.77-10.97,0-2.83.49-5.5,1.48-8.02.98-2.52,3.62-5.53,3.62-5.53.19-.16,0,0,0,0"/>
+      <path d="m137.45,189.37c-1.73-1.3-3.15-3.05-4.25-5.25-2.28-4.8-3.7-10.03-4.25-15.69-.71-5.35-1.06-10.5-1.06-15.46,0-.94.04-1.73.12-2.36v-2.12c0-.39-.04-.59-.12-.59v-2.12l.12-8.26c.08-2.52.39-6.53.94-12.04.39-3.78,1.3-7.43,2.71-10.97.55-1.57,1.26-2.77,2.12-3.6.87-.83,1.85-1.24,2.95-1.24,3.15,0,5.98.57,8.5,1.71,2.52,1.14,4.64,2.73,6.37,4.78,1.57,1.97,2.91,4.39,4.01,7.26,1.1,2.87,1.89,5.92,2.36,9.15.47,3.3.71,6.81.71,10.5v.94c0,2.44.04,4.64.12,6.61l.12,6.73c0,22.66-5.27,33.98-15.81,33.98-2.05,0-3.93-.65-5.66-1.95Zm9.09-4.72c1.18-1.14,2.08-2.69,2.71-4.66,1.49-4.01,2.4-8.34,2.71-12.98.39-4.01.59-7.47.59-10.38,0-3.54-.28-8.18-.83-13.92-.47-6.06-.71-10.58-.71-13.57v-2.12c-.16-2.99-1.16-5.58-3.01-7.79-1.85-2.2-4.11-3.3-6.79-3.3s-4.45,1.53-5.31,4.6c-.79,2.44-1.18,5.59-1.18,9.44,0,1.5.04,2.76.12,3.78v3.19l-.24,5.43c-.16,1.65-.24,3.46-.24,5.43,0,4.25.12,8.46.35,12.63.31,5.9,1.1,11.64,2.36,17.23,1.26,5.82,3.11,8.73,5.55,8.73,1.42,0,2.71-.57,3.89-1.71Z"/>
+      <path d="m179.34,189.6c-1.5-.83-2.71-2.03-3.66-3.6-1.89-3.3-3.11-7.04-3.66-11.21-.55-3.62-.83-7.94-.83-12.98-.24-8.5-.35-18.88-.35-31.15l-.12-9.09c-.08-.47-.12-1.26-.12-2.36-.16-2.99-.24-4.8-.24-5.43.71-1.65,1.53-2.48,2.48-2.48s1.79.71,2.54,2.12c.75,1.42,1.12,2.95,1.12,4.6v32.1c0,3.15.27,7.32.83,12.51.55,6.45.83,10.62.83,12.51,0,5.82,2.48,8.73,7.43,8.73,5.66,0,8.5-21.16,8.5-63.48v-7.67c-.08-.24-.12-.55-.12-.94,0-.94.22-1.63.65-2.06s1.28-.65,2.54-.65c1.02,0,1.83.29,2.42.88s.96,1.28,1.12,2.06c.08.47.12,1.38.12,2.71,0,1.26-.12,3.26-.35,6.02-.32,2.28-.47,4.25-.47,5.9,0,1.81-.08,3.42-.24,4.84l-.24,4.96v.94c.08.32.12.67.12,1.06,0,34.93-5.07,52.39-15.22,52.39-1.89,0-3.58-.41-5.07-1.24Z"/>
+      <path d="m230.32,185.41c-1.65-4.09-2.87-8.3-3.66-12.63l-.83-4.01c-2.07-10.2-3.46-16.42-4.17-18.67-.11-.34-.43-.57-.79-.57h0c-.46,0-.83.38-.83.84,0,1.96-.05,3.76-.12,5.42v6.49c0,10.39.73,18.53,2.18,24.41.04.17-.04.5-.04.5l-.45,1.12c-.45,1.1-1.52,1.82-2.71,1.82h0c-.85,0-1.66-.37-2.21-1.01l-.45-.52c-.13-.15-.2-.56-.2-.56l.11-7.59c0-7.08-.35-17.82-1.06-32.21-.63-15.34-.94-26.08-.94-32.21,0-3.78,1.3-5.66,3.89-5.66,4.25,0,7.73,1.1,10.44,3.3,2.71,2.2,4.07,5.27,4.07,9.2v8.26c0,1.18-.2,2.54-.59,4.07-.39,1.53-.83,2.77-1.3,3.72l-2.24,4.25-1.39,2.6c-.32.61-.42,1.3-.28,1.98l.37,1.79,1.65,8.38c1.1,6.06,2.16,10.97,3.19,14.75,1.02,3.78,2.28,7.2,3.78,10.27l.71,1.42c.79,1.57,1.18,2.83,1.18,3.78,0,.79-.24,1.48-.71,2.07-.47.59-1.1.88-1.89.88-1.73,0-3.3-1.89-4.72-5.66Zm-5.37-48.79c1.22-3.89,1.83-7.49,1.83-10.8,0-2.52-.32-4.88-.94-7.08-.39-1.26-1.04-2.22-1.95-2.89-.91-.67-2.03-1-3.36-1l-.24.59-.24,1.06.24,13.92c.16,4.09.24,8.54.24,13.33,1.73-.87,3.2-3.25,4.42-7.14Z"/>
+      <path d="m259.52,189.96c-1.93-.51-3.4-1.08-4.43-1.71-5.27-3.38-7.91-12.63-7.91-27.73v-9.68c0-3.15.04-5.96.12-8.44.08-2.48.24-5.17.47-8.08.24-3.07.59-5.56,1.06-7.49.47-1.93,1.26-4.11,2.36-6.55.94-2.28,2.1-4.05,3.48-5.31,1.38-1.26,3.17-2.32,5.37-3.19,1.97-.86,4.41-1.3,7.32-1.3,1.18,0,2.08.28,2.71.83.63.55.94,1.26.94,2.12,0,.79-.26,1.5-.77,2.12-.51.63-1.12.99-1.83,1.06h-5.55c-1.57,0-2.95.99-4.13,2.95-1.18,1.97-2.01,4.52-2.48,7.67-1.02,5.82-1.53,10.54-1.53,14.16v.59l-.24,11.33c-.16,3.38-.24,7.2-.24,11.45,0,2.99.12,5.43.35,7.32.39,2.83,1.06,5.19,2.01,7.08.94,2.12,2.56,3.66,4.84,4.6,1.18.47,2.48.71,3.89.71.86,0,1.73-.31,2.6-.94,1.02,0,1.87.22,2.54.65.67.43,1,1.08,1,1.95,0,3.07-2.17,4.6-6.49,4.6-1.73,0-3.56-.26-5.49-.77Z"/>
+      <path d="m284.77,189.54c-.83-.71-1.28-1.57-1.36-2.6v-5.43c-.08-.71-.12-1.53-.12-2.48,0-1.65-.12-4.17-.35-7.55l-.24-7.55c0-3.85.12-9.6.35-17.23.31-6.84.47-12.58.47-17.23,0-1.1-.12-2.75-.35-4.96-.24-2.28-.35-3.93-.35-4.96,0-5.59,1.65-8.38,4.96-8.38,2.6,0,5.6.51,9.03,1.53,3.42,1.02,5.13,2.24,5.13,3.66,0,.79-.34,1.52-1,2.18-.67.67-1.47,1.2-2.42,1.59-3.3-1.18-6.29-1.97-8.97-2.36.08,1.18.12,2.87.12,5.07,0,3.15-.04,5.98-.12,8.5-.24,3.78-.35,6.61-.35,8.5l.35,1.89,1.89-.12c.63-.08,1.42-.12,2.36-.12,3.78,0,5.66,1.1,5.66,3.3,0,.87-.35,1.59-1.06,2.18-.71.59-1.61.88-2.71.88-1.42,0-2.52-.08-3.3-.24h-2.95c.16,2.05.24,5.04.24,8.97s-.04,7.47-.12,10.62c-.24,4.8-.35,8.38-.35,10.74,0,4.41.08,6.61.24,6.61l3.89-.12c1.34-.08,2.95-.12,4.84-.12,2.99,0,4.48.94,4.48,2.83,0,1.1-.49,1.95-1.48,2.54-.98.59-2.18.88-3.6.88h-10.03c-1.02,0-1.95-.35-2.77-1.06Z"/>
+    </g>
+    <path fill="#2a2420" d="m95.71,103.26c2.29-3.28,4.48-5.83,6.17-7.65,2.37-2.55,6.94-7.39,14.12-11.61,2.74-1.61,1.92-.82,8-4,7.38-3.86,8.77-5.13,13-7,5.45-2.41,10.02-3.35,11.25-3.59,8.61-1.67,16.81-1.36,24.45-.09,7.95,1.14,24.75,3.76,40.6,16.29,4.88,3.86,8.38,7.64,10.57,10.22,1.48,2.28,2.18,3.3,2.44,3.62.29.35.62.51.68.54.34.18,2.08,1.54,2,3-.01.25-.1.9-.88,1.63-.2.46-.66.51-1.09.6-.48.03-1.21.03-2.03-.22-2.51-.78-3.45-3.2-5.06-5.6-1.76-2.64-3.54-4.17-6.42-6.49-3.79-3.05-6.37-3.7-14.63-8.87-.02-.01-.04-.03-.05-.03-2.18-1.39-5.22-3.15-9.02-4.8-2.48-1.07-10.71-4.46-21.83-5.21-16.91-1.15-29.84,4.5-35.93,7.24-8.46,3.81-14.86,8.39-19.24,12.02-4.13,2.36-5.29,5.3-9.33,9.97-1.5,1.74-1.6,1.91-2.03,2.54-.68,1.01-.93,1.61-1.48,2.23-.2.23.41-1.4.16-1.57l-4.46-3.17Z"/>
+    <path fill="#2a2420" d="m60.74,69.56l5.15,3.61c5.05,3.8,11.25,5.79,15.77,10.33,1.19,1.2,1.19,3.14,0,4.33-.89.89-2.2,1.11-3.3.67-1.99-.79-3.78-1.88-5.51-3.05-3.4-2.45-6.54-5.28-10.18-7.4,0,0-5.34-3.32-5.34-3.32-3.49-2.31-.1-7.48,3.41-5.17h0Z"/>
+    <path fill="#2a2420" d="m121.17,26.47c1.07,1.34,2.16,2.68,2.39,4.39.85,2.64,1.64,5.32,2.62,7.9.69,2.13,1.93,3.99,3.03,5.92.99,2.01,1.7,4.12,1.96,6.38.13,1.37-.88,2.57-2.24,2.7-2.11.16-3.05-2.15-4-3.6-1.17-1.92-1.76-4.06-2.36-6.21-1.33-3.65-3.45-6.95-5.31-10.35-1.09-1.33-1.33-3.04-1.58-4.74-.31-3.01,3.55-4.65,5.5-2.39h0Z"/>
+    <path fill="#2a2420" d="m269.95,74c-3.43,2.88-7.06,5.51-11.11,7.43-2.07.87-4.21,1.64-5.95,3.07-1.67,1.49-3.27,3.14-5.34,4.07-3.27,1.46-5.9-2.93-3.11-5.13,1.78-1.41,3.98-2.06,6.07-2.86,2.07-.88,3.74-2.42,5.47-3.86,3.57-2.71,7.58-4.71,11.72-6.42,2.24-.8,3.98,2.11,2.25,3.71h0Z"/>
+    <path fill="#2a2420" d="m210.47,28.03c.03,1.33-.55,2-1.18,3.03-.9,1.99-1.3,4.16-1.93,6.24-.25,1.07-1.2,1.85-1.46,2.91-.69,2.06-.99,4.27-2.32,6.08-1.38,1.77-2.44,3.68-3.1,5.75-.45,1.42-1.97,2.21-3.39,1.76-1.59-.49-2.36-2.36-1.57-3.82,1.01-1.93,1.61-4.02,1.9-6.25.35-2.21,1.71-3.98,2.68-5.92.58-.93.46-2.16,1.04-3.09,1.03-1.91,2.29-3.73,3.07-5.76.29-1.17.35-2.05,1.32-2.97,1.73-1.79,4.98-.4,4.93,2.06h0Z"/>
+  </svg>
+  <span class="nav-case">Case Study</span>
+</nav>
+
+<div class="hero-wrap">
+  <div>
+    <div class="hero-eyebrow fade">Marketing Case Study</div>
+    <h1 class="fade">Positioning a product<br>in a category that<br><em>resists clarity</em></h1>
+    <p class="hero-desc fade">How narrative design and staged messaging drove measurable growth for ReSource — an online learning product in the psychological wellbeing space.</p>
+  </div>
+  <div class="hero-card fade">
+    <div class="meta-row"><span class="meta-key">Product</span><span class="meta-val">ReSource — guided learning for self-clarity & self-worth</span></div>
+    <div class="meta-row"><span class="meta-key">Role</span><span class="meta-val">Marketing & Creative Lead</span></div>
+    <div class="meta-row"><span class="meta-key">Timeline</span><span class="meta-val">Dec 2024 – present</span></div>
+    <div class="meta-row"><span class="meta-key">Category</span><span class="meta-val">B2C EdTech / Personal Development</span></div>
+  </div>
+</div>
+
+<div class="principle-stripe">
+  <blockquote>"Product understanding is not delivered — it is constructed through messaging."</blockquote>
+  <cite>— Core principle guiding this engagement</cite>
+</div>
+
+<div class="section">
+  <span class="section-tag">Results</span>
+  <h2>What the numbers showed</h2>
+  <p class="body-text" style="max-width:560px">Growth tracked across audience size, organic reach, course launch revenue, and content engagement — measured against baseline before GTM execution began.</p>
+  <div class="metrics-grid">
+    <div class="metric-card"><span class="metric-num"><span data-target="4">0</span><span class="metric-x">×</span></span><div class="metric-label">Audience growth</div></div>
+    <div class="metric-card"><span class="metric-num"><span data-target="7">0</span><span class="metric-x">×</span></span><div class="metric-label">Increase in organic reach</div></div>
+    <div class="metric-card"><span class="metric-num"><span data-target="3" data-decimal=".5">0</span><span class="metric-x">×</span></span><div class="metric-label">Revenue growth on launches</div></div>
+    <div class="metric-card"><span class="metric-num"><span data-target="6">0</span><span class="metric-x">×</span></span><div class="metric-label">User engagement lift</div></div>
+  </div>
+</div>
+
+<div class="gallery-section">
+  <div class="gallery-inner">
+    <span class="section-tag">Content samples</span>
+    <h2>Content that built the narrative</h2>
+    <p class="body-text">Each piece served a specific role in the staged messaging progression — from problem framing to structured resolution.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="img1.png" alt="Energy Traps content card"></div>
+      <div class="gallery-item"><img src="img2.png" alt="Zero Energy healing card"></div>
+      <div class="gallery-item"><img src="img3.png" alt="Insomnia content card"></div>
+      <div class="gallery-item"><img src="img4.png" alt="5 Sleep Methods card"></div>
+      <div class="gallery-item"><img src="img5.png" alt="Personal Boundaries card"></div>
+    </div>
+    <p class="gallery-caption">Hand-drawn illustration style + watercolour — brand identity designed from scratch</p>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-tag">Positioning Strategy</span>
+  <h2>Reframing the problem<br>before naming the product</h2>
+  <div class="two-col">
+    <div>
+      <p class="body-text">The self-development space is saturated with advice but structurally unclear. Users accumulate information without gaining direction. The positioning challenge wasn't differentiation within the category — it was redefining what the category solves.</p>
+      <p class="body-text">The core insight: the problem isn't lack of information. It's lack of a structured framework for self-understanding. This reframe changed how every piece of communication was written.</p>
+      <div class="shift-box">
+        <div class="shift-row from"><span class="shift-badge">Before</span><span class="shift-text">Self-development content — advice, tips, motivation</span></div>
+        <div class="shift-row to"><span class="shift-badge">After</span><span class="shift-text">Guided framework for self-understanding and self-worth development</span></div>
+      </div>
+    </div>
+    <div>
+      <p class="model-label">Messaging model →</p>
+      <div class="steps-list">
+        <div class="step-item"><span class="step-n">1</span><div><div class="step-title">Outcome first</div><div class="step-desc">Clarity, direction, self-trust — what users actually want</div></div></div>
+        <div class="step-item"><span class="step-n">2</span><div><div class="step-title">Internal tension</div><div class="step-desc">Confusion, lack of internal structure, information overload</div></div></div>
+        <div class="step-item"><span class="step-n">3</span><div><div class="step-title">Structured resolution</div><div class="step-desc">Product introduced as framework — not a quick fix</div></div></div>
+      </div>
+      <p style="font-size:13px;color:var(--ink-muted);line-height:1.7;margin-top:1.25rem;padding:1rem;background:var(--cream2);border-radius:10px;font-style:italic;">We do not describe the product first. We shape how the user interprets their own problem — and then introduce the product as its resolution.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-tag">Go-To-Market</span>
+  <h2>GTM as a continuous<br>learning system</h2>
+  <div class="two-col">
+    <div>
+      <p class="body-text">The GTM strategy was designed not as a one-time launch but as an iterative system — testing, validating, and evolving messaging in near-real-time. Content was structured as a narrative progression, not isolated posts.</p>
+      <p class="model-label" style="margin-top:1.5rem">Narrative stages →</p>
+      <div class="narrative-list">
+        <div class="narrative-item"><span class="narrative-n">1</span><span class="narrative-text">Problem framing — naming the real difficulty</span></div>
+        <div class="narrative-item"><span class="narrative-n">2</span><span class="narrative-text">Symptom recognition — the user sees themselves in the content</span></div>
+        <div class="narrative-item"><span class="narrative-n">3</span><span class="narrative-text">Reframe — shifting how the problem is understood</span></div>
+        <div class="narrative-item"><span class="narrative-n">4</span><span class="narrative-text">Structured resolution — product as framework</span></div>
+      </div>
+    </div>
+    <div>
+      <p class="model-label">Execution principles →</p>
+      <div class="exec-cards">
+        <div class="exec-card"><div class="exec-title">Iterative message validation</div><div class="exec-desc">Content served as live message testing before campaign spend. Engagement patterns validated or invalidated positioning hypotheses.</div></div>
+        <div class="exec-card"><div class="exec-title">Rapid creative cycles</div><div class="exec-desc">Short iteration loops across paid social and organic. Speed of learning was the primary optimization target.</div></div>
+        <div class="exec-card"><div class="exec-title">AI-assisted production</div><div class="exec-desc">AI tools integrated into content workflows to maintain consistency and accelerate output without scaling headcount.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-tag">Learnings</span>
+  <h2>What this engagement confirmed</h2>
+  <div class="learnings-grid">
+    <div class="learning-card"><div class="learning-dot"></div><div class="learning-title">Messaging clarity = conversion efficiency</div><div class="learning-body">Vague positioning creates selection friction. Precise problem framing removes it. The clearer the problem articulation, the shorter the path to conversion.</div></div>
+    <div class="learning-card"><div class="learning-dot" style="background:var(--coral-light)"></div><div class="learning-title">Sequential narrative > single message</div><div class="learning-body">Staged content that builds understanding outperforms single-message exposure across all measured channels — engagement depth increases with each stage completed.</div></div>
+    <div class="learning-card"><div class="learning-dot" style="background:var(--blue)"></div><div class="learning-title">Speed of iteration compounds</div><div class="learning-body">Rapid learning cycles compound faster than polishing individual assets. The GTM system was designed for learning velocity, not single-launch perfection.</div></div>
+  </div>
+  <div class="worked-list">
+    <div class="worked-item"><span class="worked-check">✦</span> Outcome-driven positioning over content-first messaging</div>
+    <div class="worked-item"><span class="worked-check">✦</span> Sequential narrative structure increasing engagement depth</div>
+    <div class="worked-item"><span class="worked-check">✦</span> Fast iteration cycles in messaging and creative</div>
+    <div class="worked-item"><span class="worked-check">✦</span> AI tools to scale production without growing headcount</div>
+  </div>
+</div>
+
+<div class="insight-wrap">
+  <div class="insight-inner">
+    <div>
+      <p class="insight-label">Product Insight</p>
+      <p class="insight-quote">In high-emotional categories, messaging is not a layer on top of the product. Messaging is part of the product experience.</p>
+    </div>
+    <div>
+      <p class="insight-body">When users can't easily categorise what a product does, the way it communicates becomes the first product experience. Clear, structured messaging reduced cognitive load at the point of first contact — and this directly affected both conversion rate and engagement depth.</p>
+      <p class="insight-body">This case reinforced a principle I apply across product categories: positioning is not a slide in a deck. It is an active layer of the user journey.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-name">Tatiana Shelekhova — Product Marketing Manager</span>
+  <a class="footer-link" href="https://www.linkedin.com/in/shelekhova-tatiana-138a1320" target="_blank">LinkedIn ↗</a>
+</footer>
+
+<script>
+function animateCounters() {
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = parseFloat(el.dataset.target);
+    const decimal = el.dataset.decimal || '';
+    const duration = 1000;
+    const start = performance.now();
+    function update(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = decimal ? (target * ease).toFixed(1).replace('.0', decimal) : Math.round(target * ease);
+      if (p < 1) requestAnimationFrame(update);
+      else el.textContent = decimal ? target + decimal : target;
+    }
+    requestAnimationFrame(update);
+  });
+}
+const grid = document.querySelector('.metrics-grid');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); obs.disconnect(); } });
+}, { threshold: 0.3 });
+if (grid) obs.observe(grid);
+</script>
+</body>
+</html>
