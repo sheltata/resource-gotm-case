@@ -64,21 +64,21 @@ h2 { font-family: var(--handwritten); font-size: clamp(2rem, 3.5vw, 2.8rem); fon
 }
 
 .gallery-grid {
-  column-count: 3;
-  column-gap: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
   margin-top: 2rem;
+  align-items: start;
 }
 
-.gallery-item {
-  display: inline-block;
+.gallery-item img {
   width: 100%;
-  margin-bottom: 1.2rem;
-  border-radius: 12px;
-  overflow: hidden;
-  background: white;
-  border: 2px solid white;
-  box-shadow: 2px 3px 0 rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+  height: auto;
+  display: block;
+}
+  
+.gallery-item {
+transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .gallery-item:hover {
